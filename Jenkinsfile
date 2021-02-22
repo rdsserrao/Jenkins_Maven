@@ -15,10 +15,11 @@ pipeline {
                 stage ('Criar Dependências') {
                     agent any
                     tools {
+                        jdk 'JDK11'
 	                    maven 'Maven3'
                     }
                     steps {
-                        withMaven(maven: 'Maven3') {
+                        withMaven(jdk: 'JDK11') {
                         sh 'mvn clean package'
                         }
                     }         
