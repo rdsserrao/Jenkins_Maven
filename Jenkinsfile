@@ -6,17 +6,13 @@ pipeline {
                 string(name: 'Porta', defaultValue: '3000', description: 'Número da porta')
             }
             stages {
-                stage('Clean') {
-                    steps {
-                        cleanWs()
-                    }
-                }
                 stage ('Criar Dependências') {
                     tools {
+                        jdk 'JDK11'
 	                    maven 'Maven3'
                     }
                     steps {
-                        withMaven(jdk: 'JDK11') {
+                        withMaven(maven: 'Maven3', jdk: 'JDK11') {
                         sh 'mvn clean package'
                         }
                     }         
