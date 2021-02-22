@@ -34,7 +34,7 @@ pipeline {
                     agent any
                     steps {
                         sh 'docker rm -f "${Contentor}"'
-                        sh 'docker run -p "${Porta}":3000 -d --name "${Contentor}" "${Imagem}"'
+                        sh 'docker run -p "${Porta}":8080 -d --name "${Contentor}" "${Imagem}"'
                     }   
                 }
             }
