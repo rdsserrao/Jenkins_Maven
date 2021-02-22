@@ -16,7 +16,7 @@ pipeline {
 	                    maven 'Maven3'
                     }
                     steps {
-                        withMaven() {
+                        withMaven(maven: 'Maven3') {
                         sh 'mvn clean package'
                         }
                     }         
