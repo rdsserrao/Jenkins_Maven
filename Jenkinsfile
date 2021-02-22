@@ -1,8 +1,7 @@
 pipeline {
     agent any
             tools {
-	            maven 'Maven 3.6.3'
-	            jdk 'Java SE Development Kit 9.0.4'
+	            jdk 'JAVA_HOME'
             }
             parameters {
                 agent any
