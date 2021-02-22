@@ -6,11 +6,6 @@ pipeline {
                 string(name: 'Porta', defaultValue: '3000', description: 'Número da porta')
             }
             stages {
-                stage('Clean') {
-                    steps {
-                        cleanWs()
-                    }
-                }
                 stage ('Criar Dependências') {
                     tools {
                         jdk 'JDK11'
@@ -32,6 +27,11 @@ pipeline {
                         sh 'docker rm -f "${Contentor}"'
                         sh 'docker run -p "${Porta}":8080 -d --name "${Contentor}" "${Imagem}"'
                     }   
+                }
+                stage('Clean') {
+                    steps {
+                        cleanWs()
+                    }
                 }
             }
 }
