@@ -15,9 +15,9 @@ pipeline {
                 stage ('Criar Dependências') {
                     agent any
                     steps {
-                        withMaven {
-                            sh "mvn clean package"
-                        } 
+                        withMaven(maven: 'maven-3', globalMavenSettingsFilePath: 'pom.xml', mavenLocalRepo: 'MVN', mavenSettingsFilePath: 'pom.xml') {
+                        sh "mvn clean package"
+                        }
                     }         
                 }
                 stage ('Criar Imagem') {
