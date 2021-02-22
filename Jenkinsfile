@@ -6,6 +6,11 @@ pipeline {
                 string(name: 'Porta', defaultValue: '3000', description: 'Número da porta')
             }
             stages {
+                stage('Clean') {
+                    steps {
+                        cleanWs()
+                    }
+                }
                 stage ('Criar Dependências') {
                     tools {
                         jdk 'JDK11'
