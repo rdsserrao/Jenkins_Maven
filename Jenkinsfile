@@ -1,8 +1,5 @@
 pipeline {
     agent any
-            tools {
-	            jdk 'JAVA_HOME'
-            }
             parameters {
                 agent any
                 string(name: 'Imagem', defaultValue: 'jenkins1', description: 'Nome da imagem')
@@ -18,6 +15,9 @@ pipeline {
                 }
                 stage ('Criar Dependências') {
                     agent any
+                    tools {
+	                    jdk 'JAVA_HOME'
+                    }
                     steps {
                         withMaven(jdk: 'JAVA_HOME', maven: 'MAVEN_HOME') {
                         sh 'mvn clean package'
