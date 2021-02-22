@@ -14,9 +14,9 @@ pipeline {
                 }
                 stage ('Criar Dependências') {
                     agent any
-                    steps {
-                        sh 'mvn clean package'
-                    }   
+                        withMaven {
+                            sh "mvn clean package"
+                        }          
                 }
                 stage ('Criar Imagem') {
                     agent any
